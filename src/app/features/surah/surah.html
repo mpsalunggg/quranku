@@ -1,0 +1,35 @@
+<div class="p-6">
+  <h1 class="text-3xl font-bold mb-6">Daftar Surah</h1>
+
+  <!-- Loading State -->
+  <div *ngIf="loading" class="text-center py-8">
+    <p class="text-gray-600">Loading surahs...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+    {{ error }}
+  </div>
+
+  <!-- Surah List -->
+  <div *ngIf="!loading && !error" class="grid gap-4">
+    <div
+      *ngFor="let surah of surahs"
+      class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer"
+    >
+      <div class="flex justify-between items-start">
+        <div>
+          <h2 class="text-xl font-semibold text-gray-800 mb-1">
+            {{ surah.number }}. {{ surah.name }}
+          </h2>
+          <h3 class="text-lg text-gray-600 mb-2">{{ surah.englishName }}</h3>
+          <p class="text-sm text-gray-500">{{ surah.englishNameTranslation }}</p>
+        </div>
+        <div class="text-right text-sm text-gray-500">
+          <p>{{ surah.numberOfAyahs }} Ayat</p>
+          <p class="capitalize">{{ surah.revelationType }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
