@@ -1,7 +1,31 @@
-<section>
-  <div class="flex flex-col justify-center items-center justify-centerg gap-4 h-screen">
-    <h1 class="text-6xl">القرآن</h1>
-    <p class="text-gray-500">Read and explore the 114 Surahs with translations</p>
-    <ui-button (click)="goToSurah()" size="sm">Lihat Daftar Surah</ui-button>
+<section class="min-h-screen">
+  <div class="flex flex-col justify-center items-center gap-8 h-screen px-4">
+    <!-- Arabic Title with enhanced styling -->
+    <div class="text-center space-y-4">
+      <h1
+        class="text-7xl md:text-8xl lg:text-9xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent drop-shadow-sm"
+      >
+        القرآن
+      </h1>
+    </div>
+
+    <div class="text-center max-w-2xl">
+      <p class="text-lg text-gray-600 leading-relaxed font-light">
+        Read and explore the 114 Surahs
+      </p>
+      <p class="text-lg text-gray-500">
+        "And We have made the Quran easy to remember" - <span class="font-bold">Al-Qamar: 17</span>
+      </p>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4 items-center">
+      <ui-button
+        (click)="goToSurah()"
+        size="sm"
+        class="shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+      >
+        <span class="flex items-center gap-2"> 📖 Lihat Daftar Surah </span>
+      </ui-button>
+    </div>
   </div>
 </section>
