@@ -2,19 +2,19 @@
   <h1 class="text-3xl font-bold mb-6">Daftar Surah</h1>
 
   <!-- Loading State -->
-  <div *ngIf="loading" class="text-center py-8">
+  <div *ngIf="loading()" class="text-center py-8">
     <p class="text-gray-600">Loading surahs...</p>
   </div>
 
   <!-- Error State -->
-  <div *ngIf="error" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-    {{ error }}
+  <div *ngIf="error()" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+    {{ error() }}
   </div>
 
   <!-- Surah List -->
-  <div *ngIf="!loading && !error" class="grid gap-4">
+  <div *ngIf="!loading() && !error()" class="grid gap-4">
     <div
-      *ngFor="let surah of surahs"
+      *ngFor="let surah of surahs()"
       class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer"
     >
       <div class="flex justify-between items-start">
