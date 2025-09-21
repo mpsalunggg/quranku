@@ -27,7 +27,7 @@ export class Button {
     const variants: Record<string, string> = {
       primary: this.outline
         ? 'border border-blue-600 text-blue-600 hover:bg-blue-50'
-        : 'bg-blue-600 text-white hover:bg-blue-700',
+        : 'bg-blue-500 text-white hover:bg-blue-600',
       secondary: this.outline
         ? 'border border-gray-400 text-gray-700 hover:bg-gray-100'
         : 'bg-gray-200 text-gray-800 hover:bg-gray-300',
