@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, HostBinding } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { cn } from '../../utils/tw';
 
 @Component({
   selector: 'ui-button',
@@ -14,7 +15,7 @@ export class Button {
   @Input() outline = false;
   @Input() disabled = false;
 
-  get classes(): string {
+  @HostBinding('class') get hostClasses(): string {
     const base =
       'inline-flex items-center justify-center font-medium rounded-lg focus:outline-none transition disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer';
 
@@ -39,6 +40,6 @@ export class Button {
         : 'bg-red-600 text-white hover:bg-red-700',
     };
 
-    return `${base} ${sizes[this.size]} ${variants[this.variant]}`;
+    return cn(base, sizes[this.size], variants[this.variant]);
   }
 }
