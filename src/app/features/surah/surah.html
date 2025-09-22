@@ -12,9 +12,7 @@
   } @if (!loading() && !error()) {
   <div class="grid grid-cols-3 gap-4">
     @for (surah of surahs(); track surah.number; let i = $index) {
-    <div
-      class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer"
-    >
+    <ui-card>
       <div class="flex justify-between items-start">
         <div>
           <h2 class="text-xl font-semibold text-gray-800 mb-1">{{ i + 1 }}. {{ surah.name }}</h2>
@@ -30,7 +28,7 @@
           <p class="capitalize">{{ surah.revelationType }}</p>
         </div>
       </div>
-    </div>
+    </ui-card>
     }
   </div>
   }

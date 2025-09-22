@@ -1,11 +1,12 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { QuranService, Surah as SurahModel } from '../../services/quran.service';
+import { Card } from '../../shared/components/card/card';
 
 @Component({
   selector: 'app-surah',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, Card],
   templateUrl: './surah.html',
 })
 export class Surah {
