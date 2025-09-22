@@ -23,7 +23,6 @@ export class Surah {
 
     this.quranService.getSurahs().subscribe({
       next: (response) => {
-        console.log("res" , response)
         this.surahs.set(response.data);
         this.loading.set(false);
       },

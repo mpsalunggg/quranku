@@ -6,7 +6,6 @@ import { Button } from '../../shared/components/button/button';
   selector: 'app-home',
   imports: [Button],
   templateUrl: './home.html',
-  styleUrl: './home.css',
 })
 export class Home {
   constructor(private router: Router) {}
