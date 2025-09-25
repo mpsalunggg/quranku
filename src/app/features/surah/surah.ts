@@ -2,17 +2,19 @@ import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { QuranService, Surah as SurahModel } from '../../services/quran.service';
 import { Card } from '../../shared/components/card/card';
+import { Input } from '../../shared/components/input/input';
 
 @Component({
   selector: 'app-surah',
   standalone: true,
-  imports: [CommonModule, Card],
+  imports: [CommonModule, Card, Input],
   templateUrl: './surah.html',
 })
 export class Surah {
   surahs = signal<SurahModel[]>([]);
   loading = signal<boolean>(false);
   error = signal<string | null>(null);
+  searchTerm = signal<string>('');
 
   constructor(private quranService: QuranService) {
     this.loadSurahs();
@@ -32,5 +34,9 @@ export class Surah {
         this.loading.set(false);
       },
     });
+  }
+
+  onSearchChange(searchValue: string) {
+    this.searchTerm.set(searchValue);
   }
 }

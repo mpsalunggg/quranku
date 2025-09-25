@@ -1,0 +1,20 @@
+<div [class]="containerClasses()">
+  <div [class]="wrapperClasses()">
+    @if (icon() && iconPosition() === 'left') {
+    <lucide-icon [img]="getIcon()" [class]="iconClasses()"></lucide-icon>
+    }
+
+    <input
+      #input
+      [type]="type()"
+      [placeholder]="placeholder()"
+      [value]="value()"
+      [class]="inputClasses()"
+      (input)="onInputChange($event)"
+    />
+
+    @if (icon() && iconPosition() === 'right') {
+    <lucide-icon [img]="getIcon()" [class]="iconClasses()"></lucide-icon>
+    }
+  </div>
+</div>

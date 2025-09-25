@@ -1,5 +1,5 @@
-<section class="py-6 px-60 bg-blue-100 space-y-6">
-  <section class="text-center">
+<section class="py-6 xl:px-60 lg:px-32 px-6 bg-blue-100 space-y-6">
+  <section class="text-center py-4">
     <h1
       class="text-5xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent mb-4"
     >
@@ -12,6 +12,18 @@
     </p>
   </section>
 
+  <div class="mb-8">
+    <ui-input
+      placeholder="Search surah by name..."
+      icon="search"
+      size="md"
+      rounded="lg"
+      icon="search"
+      variant="filled"
+      (onChange)="onSearchChange($event)"
+    />
+  </div>
+
   @if (loading()) {
   <div class="text-center py-8">
     <p class="text-gray-600">Loading surahs...</p>
@@ -21,7 +33,7 @@
     {{ error() }}
   </div>
   } @if (!loading() && !error()) {
-  <div class="grid grid-cols-3 gap-4">
+  <div class="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-4">
     @for (surah of surahs(); track surah.number; let i = $index) {
     <ui-card>
       <div class="flex justify-between items-start">
