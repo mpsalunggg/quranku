@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { QuranService, Surah as SurahModel } from '../../services/quran.service';
 import { Card } from '../../shared/components/card/card';
 import { Input } from '../../shared/components/input/input';
+import { createDebouncedSignal } from '../../shared/utils/debounce';
 
 @Component({
   selector: 'app-surah',
@@ -15,9 +16,10 @@ export class Surah {
   loading = signal<boolean>(false);
   error = signal<string | null>(null);
   searchTerm = signal<string>('');
+  debouncedSearchTerm = createDebouncedSignal(this.searchTerm, 300);
 
   filteredSurahs = computed(() => {
-    const term = this.searchTerm().toLowerCase();
+    const term = this.debouncedSearchTerm().toLowerCase();
     if (!term) return this.surahs();
 
     return this.surahs().filter(
