@@ -34,7 +34,7 @@
   </div>
   } @if (!loading() && !error()) {
   <div class="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-4">
-    @for (surah of surahs(); track surah.number; let i = $index) {
+    @for (surah of filteredSurahs(); track surah.number; let i = $index) {
     <ui-card>
       <div class="flex justify-between items-start">
         <div>

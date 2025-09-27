@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { QuranService, Surah as SurahModel } from '../../services/quran.service';
 import { Card } from '../../shared/components/card/card';
@@ -15,6 +15,18 @@ export class Surah {
   loading = signal<boolean>(false);
   error = signal<string | null>(null);
   searchTerm = signal<string>('');
+
+  filteredSurahs = computed(() => {
+    const term = this.searchTerm().toLowerCase();
+    if (!term) return this.surahs();
+
+    return this.surahs().filter(
+      (surah) =>
+        surah.name.toLowerCase().includes(term) ||
+        surah.englishName.toLowerCase().includes(term) ||
+        surah.englishNameTranslation.toLowerCase().includes(term)
+    );
+  });
 
   constructor(private quranService: QuranService) {
     this.loadSurahs();
@@ -37,6 +49,7 @@ export class Surah {
   }
 
   onSearchChange(searchValue: string) {
+    console.log('search :', searchValue);
     this.searchTerm.set(searchValue);
   }
 }
