@@ -22,4 +22,8 @@ export class QuranService {
   getSurahs(): Observable<{ data: Surah[] }> {
     return this.http.get<{ data: Surah[] }>(`${this.baseUrl}/surah`);
   }
+
+  getAyah(ayahId: string, reciterEdition = 'ar.alafasy'): Observable<{ data: any }> {
+    return this.http.get<{ data: any }>(`${this.baseUrl}/surah/${ayahId}/${reciterEdition}`);
+  }
 }

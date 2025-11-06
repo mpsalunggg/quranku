@@ -4,6 +4,7 @@ import { QuranService, Surah as SurahModel } from '../../services/quran.service'
 import { Card } from '../../shared/components/card/card';
 import { Input } from '../../shared/components/input/input';
 import { createDebouncedSignal } from '../../shared/utils/debounce';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-surah',
@@ -30,7 +31,7 @@ export class Surah {
     );
   });
 
-  constructor(private quranService: QuranService) {
+  constructor(private quranService: QuranService, private router: Router) {
     this.loadSurahs();
   }
 
@@ -50,8 +51,11 @@ export class Surah {
     });
   }
 
+  navigateToAyah(ayahId: number) {
+    this.router.navigate(['/surah', ayahId]);
+  }
+
   onSearchChange(searchValue: string) {
-    console.log('search :', searchValue);
     this.searchTerm.set(searchValue);
   }
 }
